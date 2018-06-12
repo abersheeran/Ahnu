@@ -1,6 +1,8 @@
 # Ahnu
 
-安徽师范大学教务系统的部分爬虫， 以及使用样例。
+## 如何使用
+
+将整个库下载下来，安装`pip install -r requirements.txt`。
 
 ## Base.py
 使用教务系统的基础文件：
