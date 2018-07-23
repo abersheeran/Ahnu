@@ -3,8 +3,8 @@ Author: Aber Sheeran
 Time: 2017-12-20
 """
 import re
-from requests import Session
 from Base import Base
+
 
 class Lesson_Coding_Error(Exception):
     pass
@@ -50,8 +50,8 @@ class ChoseLesson(Base):
 
 if __name__ == "__main__":
     user = {
-        "username":"",
-        "password":""
+        "username": "",
+        "password": ""
     }
     main = ChoseLesson(user)
     main.get_lesson("(2017-2018-1)-07492110-0101224-1")
