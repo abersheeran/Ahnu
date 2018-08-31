@@ -9,7 +9,7 @@
   1. `get_page()` 获取某一页面，注意学校教务系统的Set-Character，requests无法解析。必须用content手动解码为“UTF-8”。
   2. `cache` 保持登陆状态的值，可以使用`cache`的`get`和`post`方法进行其他操作。
 
-## ChoseLessons.py
+## [ChoseLessons.py](https://abersheeran.com/articles/Hack-school-lesson/)
 选课:
 
   课程编号可通过审查元素查看, 为任一tr的id.例如`id="2017-2018-1-07492110-0101224-1"`, 则课程编号为 `(2017-2018-1)-07492110-0101224-1`
@@ -21,5 +21,5 @@
 
   学年应类似于`2017-2018`； 学期应为`1`或`2`，其他值会直接返回整个学年的所有成绩
 
-## WriteTeachingEvaluation.py
+## [WriteTeachingEvaluation.py](https://abersheeran.com/articles/Fuck-TeachingEvaluation/)
   None
