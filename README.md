@@ -23,3 +23,7 @@
 
 ## [WriteTeachingEvaluation.py](https://abersheeran.com/articles/Fuck-TeachingEvaluation/)
   None
+
+# 非校园网环境使用FTP
+
+访问[下载地址](https://github.com/AberSheeran/Ahnu/files/2636776/FileZilla.zip)下载zip文件, 解压之后, 运行FileZilla.exe即可.
