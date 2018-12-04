@@ -16,19 +16,10 @@ class GetTheFuckTranscripts(Base):
         如果两个参数都为None,那么返回全学年
         """
         if year is None and semester is None:
-            html = self.get_page("http://jwgl.ahnu.edu.cn/query/cjquery")
+            html = self.get_page("query/cjquery")
         else:
-            html = self.get_page("http://jwgl.ahnu.edu.cn/query/cjquery/index?action=ok&xkxn=%s&xkxq=%s" % (year, semester))
+            html = self.get_page("query/cjquery/index?action=ok&xkxn=%s&xkxq=%s" % (year, semester))
         return html
-        # # 一波切割字符串骚操作,不用re也不用xpath或者bs
-        # table = html.split("table")[2]
-        # return "{0}{1}{2}{3}{4}".format(
-        #     '<html>\n<head>\n<link rel="stylesheet" href="https://agent.cathaysian.cn/cloudflare?url=ajax/libs/pure/1.0.0/pure-min.css">\n</head>\n',
-        #     '<body>\n<table class="pure-table pure-table-bordered "',
-        #     table.replace('class="thtd"', 'align="center"'),
-        #     "table>\n</body>",
-        #     '\n</html>',
-        # )
 
     def parser(self, html):
         page = BeautifulSoup(html, "html.parser")

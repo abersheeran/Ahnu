@@ -4,17 +4,18 @@ Author: Aber Sheeran
 Time: 2017-12-16
 """
 from bs4 import BeautifulSoup
-from Base import Base
+from Base import Base, log
 
 
 class FuckTheTeachingEvaluation(Base):
     """教学评价"""
+
     def get_links(self):
         """获取教学评价页面每一个link"""
         result_list = []
-        page = BeautifulSoup(self.get_page("http://jwgl.ahnu.edu.cn/jxpj/xsjxpj"), "html.parser")
+        page = BeautifulSoup(self.get_page("jxpj/xsjxpj"), "html.parser")
         for each_tag in page.find_all("a"):
-            result_list.append("http://jwgl.ahnu.edu.cn" + each_tag['href'])
+            result_list.append(each_tag['href'])
         return result_list
 
     def deal_teaching_evaluation_page(self, page_url):
@@ -34,12 +35,7 @@ class FuckTheTeachingEvaluation(Base):
             data=post_data,
         )
 
-
-if __name__ == "__main__":
-    user = {
-        "username": "",  # 学号
-        "password": "",  # 教务系统密码
-    }
-    main = FuckTheTeachingEvaluation(user)
-    for each in main.get_links():
-        main.deal_teaching_evaluation_page(each)
+    def run(self):
+        for each in self.get_links():
+            log.debug(f"处理{each}中...")
+            self.deal_teaching_evaluation_page(each)

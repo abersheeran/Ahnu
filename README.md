@@ -1,29 +1,26 @@
 # Ahnu
 
-## 如何使用
+## JWGL
+
+关于教务系统的一套代码, 可用其查成绩, 查GPA, 查课表, 查考试安排, 填教学评价, 抢课等.
+
+### 如何使用
 
 将整个库下载下来，安装`pip install -r requirements.txt`。
 
-## Base.py
-使用教务系统的基础文件：
-  1. `get_page()` 获取某一页面，注意学校教务系统的Set-Character，requests无法解析。必须用content手动解码为“UTF-8”。
-  2. `cache` 保持登陆状态的值，可以使用`cache`的`get`和`post`方法进行其他操作。
+根据自己的需求修改`main.py`中的参数和函数. 运行即可.
 
-## [ChoseLessons.py](https://abersheeran.com/articles/Hack-school-lesson/)
-选课:
+#### Base参数说明
 
-  课程编号可通过审查元素查看, 为任一tr的id.例如`id="2017-2018-1-07492110-0101224-1"`, 则课程编号为 `(2017-2018-1)-07492110-0101224-1`
+1. `proxy`: 当处于非校园网时, 可设为True. 即可正常访问教务系统
+2. `debug`: 当你需要一些debug说明时, 将它设为True. 当然这一般没什么用
 
-## GetTranscript.py
-查询成绩:
+### 参与开发
 
-  登录后Get请求`http://jwgl.ahnu.edu.cn/query/cjquery/index?action=ok&xkxn=学年&xkxq=学期`
+此项目是基于手机端的. 因为PC端有验证码, 懒得弄.
 
-  学年应类似于`2017-2018`； 学期应为`1`或`2`，其他值会直接返回整个学年的所有成绩
+使用`Base.py`中的`Base`来访问教务系统, 自行编写处理页面的函数, 挂到`__init__.py`里方便调用. 可参考Timetable等文件
 
-## [WriteTeachingEvaluation.py](https://abersheeran.com/articles/Fuck-TeachingEvaluation/)
-  None
-
-# 非校园网环境使用FTP
+## 非校园网环境使用FTP
 
 访问[下载地址](https://github.com/AberSheeran/Ahnu/files/2636776/FileZilla.zip)下载zip文件, 解压之后, 运行FileZilla.exe即可.
