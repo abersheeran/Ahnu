@@ -48,7 +48,7 @@ class Base:
 
     def get_page(self, target_url):
         """GET 获取页面内容"""
-        if target_url.startswith("http://mjwgl.ahnu.edu.cn/"):
+        if target_url.startswith("http://"):
             return self.cache.get(target_url).content.decode("utf-8")
         return self.cache.get("http://mjwgl.ahnu.edu.cn/"+target_url).content.decode("utf-8")
 

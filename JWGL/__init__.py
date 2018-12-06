@@ -1,6 +1,7 @@
 from .Base import Base
 from .Timetable import get_course_schedule
 from .Examination import get_examination_time
+from .TeachingEvaluation import fuck_the_teaching_evaluation
 
 
 class FuckJWGL(Base):
@@ -36,3 +37,13 @@ class FuckJWGL(Base):
         if year is None:
             return get_examination_time(self)
         return get_examination_time(self, year=year, semester=semester)
+
+    def fuck_the_teaching_evaluation(self):
+        """
+        自动填写教学评价, 给所有老师打满分
+        """
+        try:
+            fuck_the_teaching_evaluation(self)
+        except Exception as e:  # 强行返回一个值
+            return e
+        return "Done"
