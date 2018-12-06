@@ -30,10 +30,10 @@ def _deal_teaching_evaluation_page(session, page_url):
     # 评语部分，随便改
     post_data["PJXX"] = "上课生动有趣，深入浅出！"
     log.debug(post_data)
-    message = session.cache.post(
-        "http://mjwgl.ahnu.edu.cn/jxpj/xsjxpj/saveinfo?action=ok",
+    message = session.post_data(
+        "/jxpj/xsjxpj/saveinfo?action=ok",
         data=post_data,
-    ).json()
+    )
     try:
         assert message["success"] == "success", message["msg"]
     except AssertionError as e:

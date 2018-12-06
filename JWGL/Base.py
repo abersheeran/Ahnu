@@ -49,8 +49,19 @@ class Base:
     def get_page(self, target_url):
         """GET 获取页面内容"""
         if target_url.startswith("http://"):
-            return self.cache.get(target_url).content.decode("utf-8")
-        return self.cache.get("http://mjwgl.ahnu.edu.cn/"+target_url).content.decode("utf-8")
+            rep = self.cache.get(target_url, allow_redirects=False)
+        else:
+            rep = self.cache.get("http://mjwgl.ahnu.edu.cn/"+target_url, allow_redirects=False)
+        assert rep.status_code == 200, "未登陆"
+        return rep.content.decode("UTF-8")
+
+    def post_data(self, target_url, data=None, json=None, **kwargs):
+        if target_url.startswith("http://"):
+            rep = self.cache.post(target_url, data=data, json=json, allow_redirects=False, ** kwargs)
+        else:
+            rep = self.cache.post("http://mjwgl.ahnu.edu.cn"+target_url, data=data, json=json, allow_redirects=False, **kwargs)
+        assert rep.status_code == 200, "未登陆"
+        return rep.json()
 
     def get_url(self, op: str) -> str:
         """
