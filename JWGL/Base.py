@@ -69,6 +69,6 @@ class Base:
 
         如: 课表查询: kbcx
         """
-        rep = self.cache.post("http://mjwgl.ahnu.edu.cn/appdata.shtml", {"requesttype": op, "sessionid": self.sessionid})
+        rep = self.cache.post("http://mjwgl.ahnu.edu.cn/appdata.shtml", {"requesttype": op, "sessionid": self.sessionid}, allow_redirects=False)
         self.sessionid = rep.cookies["PHPSESSID"]
         return rep.headers["Location"]
