@@ -23,6 +23,10 @@
 
 使用`Base.py`中的`Base`来访问教务系统, 自行编写处理页面的函数, 挂到`__init__.py`里方便调用. 可参考Timetable等文件
 
+## electfee.py
+
+查电费的脚本
+
 ## 非校园网环境使用FTP
 
 访问[下载地址](https://github.com/AberSheeran/Ahnu/files/2636776/FileZilla.zip)下载zip文件, 解压之后, 运行FileZilla.exe即可.
