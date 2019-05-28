@@ -11,11 +11,9 @@ log = logging.getLogger("Ahnu")
 class Base:
     """访问教务系统的基类"""
 
-    def __init__(self, user_dictionary, debug=False, proxy=False):
+    def __init__(self, user_dictionary, debug=False):
         if debug:
             self._open_debug()
-        if proxy:
-            self._set_proxy()
 
         self.cache = Session()
         # 登陆教务系统
@@ -41,10 +39,6 @@ class Base:
             format='[%(levelname)s]-[%(asctime)s] %(message)s',
             datefmt='%Y-%m-%d %H:%M:%S',
         )
-
-    def _set_proxy(self):
-        socks.set_default_proxy(socks.PROXY_TYPE_SOCKS5, "210.45.192.197", 419)
-        socket.socket = socks.socksocket
 
     def get_page(self, target_url):
         """GET 获取页面内容"""

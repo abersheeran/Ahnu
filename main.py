@@ -6,4 +6,4 @@ with open("config.json", "r") as file:
     print(FuckJWGL({
         "username": data["username"],
         "password": data["password"]
-    }, proxy=True).fuck_the_teaching_evaluation())
+    }).fuck_the_teaching_evaluation())
