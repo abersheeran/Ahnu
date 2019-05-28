@@ -24,10 +24,9 @@ class GetTheFuckTranscripts(Base):
     def parser(self, html):
         page = BeautifulSoup(html, "html.parser")
         all_lesson = list()
-        keys = list()
-        for td in page.find_all("tr")[1].find_all("td"):
-            keys.append(td.text)
-        for tr in page.find_all("tr")[2:-1]:
+        # 课程各种属性, 例如课程代码, 课程名称, 课程性质
+        keys = [td.text for td in page.find_all("tr")[0].find_all("th")]
+        for tr in page.find_all("tr")[1:-1]:
             lesson = dict()
             for index, td in enumerate(tr.find_all("td")):
                 lesson[keys[index]] = td.text
@@ -63,5 +62,5 @@ if __name__ == "__main__":
         "password": ""
     })
     for year, month in [("2016-2017", "1"), ("2016-2017", "2"), ("2017-2018", "1"), ("2017-2018", "2")]:
-        data = main.get_transcripts(year, month)
-        print(year, month, ":", main.get_average(data))
+        page = main.get_transcripts(year, month)
+        print(year, month, ":", main.get_average(page))
